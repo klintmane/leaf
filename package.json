@@ -1,0 +1,16 @@
+{
+  "name": "leaf",
+  "version": "1.0.0",
+  "main": "dist/leaf.js",
+  "dependencies": {
+    "htm": "^2.1.1",
+    "snabbdom": "^0.7.3"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.0"
+  },
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "rm -rf dist && parcel build src/lib/index.js"
+  }
+}
