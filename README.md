@@ -29,7 +29,7 @@ const Counter = comp(ctx => {
   const { children } = props;
 
   return html`
-    <div onclick="${increment}">
+    <div onclick=${increment}>
       <h2>${children}</h2>
       <div>Current count: ${count}</div>
     </div>
