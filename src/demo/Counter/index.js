@@ -3,8 +3,8 @@ import { comp, html } from "~/lib";
 import context from "./context";
 
 export const Counter = comp(ctx => {
-  const { props, increment, count } = ctx;
-  const { children } = props;
+  const { count, increment } = ctx;
+  const { children } = ctx.props;
 
   return html`
     <div onclick=${increment}>
