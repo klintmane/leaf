@@ -1,5 +1,11 @@
 import { patch } from "./vdom";
 
+const render = (ctx, fn) => {
+  const node = fn(ctx);
+  node.data = { ...node.data, hook: ctx.hooks }; // register hooks on the node
+  return node;
+};
+
 export const comp = (fn, state = {}) => props => {
   const ctx = {};
 
@@ -24,11 +30,10 @@ export const comp = (fn, state = {}) => props => {
         : { ...ctx.__state, ...key }; // or update with object
 
     const prevNode = ctx.node;
-    ctx.node = fn(ctxProxy);
+    ctx.node = render(ctxProxy, fn);
     prevNode && patch(prevNode, ctx.node);
   };
 
-  ctx.node = fn(ctxProxy);
-
-  return ctx;
+  ctx.node = render(ctxProxy, fn);
+  return ctx.node;
 };

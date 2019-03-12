@@ -19,7 +19,7 @@ _A simplistic and fast JavaScript library for building user interfaces._
 ```js
 import { comp, html } from "@klintmane/leaf";
 
-const context = ctx => ({
+const init = ctx => ({
   count: 1,
   increment: () => ctx.set({ count: ctx.count + 1 })
 });
@@ -34,5 +34,5 @@ const Counter = comp(ctx => {
       <div>Current count: ${count}</div>
     </div>
   `;
-}, context);
+}, init);
 ```

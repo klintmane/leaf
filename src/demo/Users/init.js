@@ -1,17 +1,17 @@
 const states = {
   loading: (loading = true) => ({ loading }),
-  success: todos => ({ todos, loading: false, error: false }),
+  success: data => ({ data, loading: false, error: false }),
   error: error => ({ loading: false, error })
 };
 
 export default ctx => ({
-  getTodos: () => {
-    if (!ctx.todos && !ctx.loading) {
+  getUsers: () => {
+    if (!ctx.users && !ctx.loading) {
       ctx.set(states.loading());
 
-      fetch("https://jsonplaceholder.typicode.com/todos")
+      fetch("https://rem-rest-api.herokuapp.com/api/users?limit=5")
         .then(res => res.json())
-        .then(todos => ctx.set(states.success(todos)))
+        .then(users => ctx.set(states.success(users.data)))
         .catch(e => ctx.set(states.error(e)));
     }
   }

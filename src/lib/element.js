@@ -5,7 +5,7 @@ export const createComponent = (comp, attrs, children) =>
   comp({
     ...attrs,
     children
-  }).node;
+  });
 
 export const createElement = (tag, attrs, ...children) => {
   // If the tag references a function, it is a component
